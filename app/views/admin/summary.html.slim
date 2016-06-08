@@ -1,0 +1,27 @@
+= render "links"
+h1 Summary
+table.guests.totals
+  tr
+    th Accessed
+    th Completed
+    th Waiting
+    th Attending Ceremony
+    th Attending Reception
+    th Declining Ceremony
+    th Declining Reception
+    th Chicken
+    th Steak
+    th Salmon
+    th Ravioli
+  tr
+    td= total :accessed
+    td= total :completed
+    td= total :accessed, false
+    td= total :ceremony
+    td= total :reception
+    td= total :ceremony, false
+    td= total :reception, false
+    td= total :chicken
+    td= total :steak
+    td= total :salmon
+    td= total :ravioli

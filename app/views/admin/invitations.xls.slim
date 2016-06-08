@@ -1,0 +1,18 @@
+table
+  tr
+    th ID
+    th Code
+    th Name
+    th Guests
+    th # Guests
+  - @invitations.sort_by{ |x| x.id }.each do |invitation|
+    tr
+      td= invitation.id
+      td= invitation.key
+      td= invitation.name
+      td
+        - invitation.guests.each do |guest|
+          = guest.name
+          - if not invitation.guests.index(guest) == invitation.guests.length-1
+            | , 
+      td= invitation.number_of_guests

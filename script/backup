@@ -1,0 +1,12 @@
+#!/bin/bash
+
+TIME=`date +%m-%d-%H-%M`
+mkdir ~/backups
+mkdir ~/backups/full
+mkdir ~/backups/db
+cd /var/www/amanda-adam-rails/db
+cp production.sqlite3 ../backups/production-$TIME.sqlite3
+cp production.sqlite3 ~/backups/db/production-$TIME.sqlite3
+cd /var/www/
+cp -R amanda-adam-rails ~/backups/full/amanda-adam-rails-$TIME
+tar -zcvf ~/backups/full/amanda-adam-rails-$TIME.tar.gz ~/backups/full/amanda-adam-rails-$TIME

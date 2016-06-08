@@ -1,0 +1,66 @@
+= render "shared/rsvp_warning"
+center
+  h1(style="margin-top:0px;padding-top:0px;width:780px;")
+    span
+      | Invitation for:
+      | &nbsp;
+    b.invitation_name= @invitation.name
+- if @invitation.is_manual
+  h2.alert(style="color:#444;")
+    span Your password to log-in and make changes to this invitation is:  
+    .key= @invitation.key
+    span (you should write this down)
+- if @invitation.completed
+  center
+    .alert.alert-success
+      h3(style="color:''") Invitation Status:
+      h2
+        | &nbsp;&nbsp;
+        b(style="color:black") Your invitation is complete!
+      p Please look over your responses to ensure everything is correct.
+      p
+        | If you have any questions, please
+        = link_to "contact us", "/contact"
+        |.
+      - if guests_attending(@invitation, :ceremony) > 0 or guests_attending(@invitation, :reception) > 0
+        p We look forward to seeing you on the 7th!
+- else
+  center
+    .alert.alert-info
+      h3 Invitation Status:
+      h2(style="color:black")
+        | Waiting for a response from 
+        - names = []
+        - @invitation.guests.each do |guest|
+          - if not guest.completed
+            - if guest.is_plus_one
+              - names.push guest.name
+            - else
+              - names.push guest.first_name
+        b
+          - if names.length > 1
+            = names[0..-2].join(', ') + " and #{names.last}."
+          - else
+            = names.join(',') + '.'
+      p
+        span.pictos } 
+        | Click the blue 
+        b "Respond to RSVP" 
+        | buttons below for each guest.
+        span.pictos } 
+hr
+h2(style="margin-bottom:0px;")
+  | Guests 
+  span on this invitation:
+.invitation_guest_list
+  = render @invitation.guests
+- if @invitation.is_manual and @invitation.guests.length < @invitation.number_of_guests
+  br
+  = link_to "/invitations/#{@invitation.key}/guests/new", :class => "btn btn-success" do
+    span.pictos +
+    | &nbsp;Add a guest to this invitation
+  br
+br
+hr
+
+= render "shared/help", :message => "Do the invitation or guest names on this page seem incorrect?", :anchor => "incorrect_information"

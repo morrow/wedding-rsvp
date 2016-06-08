@@ -1,0 +1,25 @@
+table
+  tr
+    th ID
+    th Invitation
+    th Guest Name
+    th Guest First Name
+    th Guest Last Name
+    th Accessed?
+    th Ceremony?
+    th Reception?
+    th Meal
+    th Accommodations
+    th Is a plus one?
+  tr
+    td= guest.id
+    td= guest.invitation
+    td= guest.name
+    td= guest.first_name
+    td= guest.last_name
+    td= humanize guest.accessed
+    td= humanize guest.ceremony, :attendance
+    td= humanize guest.reception, :attendance
+    td= guest.meal
+    td= guest.accommodations
+    td= guest.is_plus_one

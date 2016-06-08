@@ -1,0 +1,49 @@
+= render "links"
+h1 RSVP Deadline Management
+h2
+  span RSVP system status: &nbsp;
+  - if @admin.global_lock != nil
+    b(style="color:#{rsvp_is_locked ? 'red' : 'green'}") Manually 
+  b(style="color:#{rsvp_is_locked ? 'red' : 'green'}")= rsvp_is_locked ? 'LOCKED' : 'UNLOCKED'
+  - if @admin.global_lock == nil
+    | &nbsp;
+  - if deadline_is_passed and @admin.global_lock == nil
+    span (automatically after passing deadline).
+  - elsif @admin.global_lock == nil
+    span (will lock automatically after deadline).
+= form_for @admin do |f|
+  .label
+    h2
+      span Deadline: &nbsp;
+      b(style="font-size:130%")= @admin.global_lock_date.localtime.strftime("%A %B  %e,  %Y")
+      span &nbsp; at &nbsp;
+      b(style="font-size:130%")= @admin.global_lock_date.localtime.strftime("%I:%M %p")
+      span &nbsp;&nbsp;EST
+      br
+      br
+      span Deadline passed:
+      b(style="color:#{deadline_is_passed ? 'red' : 'green'}")= deadline_is_passed ? 'Yes' : 'No'
+  br
+  .label(style="background:whiteSmoke;padding:10px;")
+    h2(style="display:inline-block") Edit deadline: &nbsp;&nbsp;
+    span(style="font-size:130%")= datetime_select :admin, :global_lock_date, :default => @admin.global_lock_date
+    b(style="font-size:130%") EST
+
+  - if @admin.global_lock
+    - background_color = '#F2DEDE'
+  - elsif @admin.global_lock.nil?
+    - background_color = '#D0E5FB'
+  - else
+    - background_color = '#DFF0D8'
+  h3.label(style="padding:15px;background:#{background_color}")
+    b Lock Control: 
+    | &nbsp;
+    | &nbsp;
+    = f.select :global_lock, {"Automatic (Lock At Deadline)" => nil, "Manual Lock" => true, "Manual Unlock" => false}, :default => @admin.global_lock
+    span(style="color:red") &nbsp;&nbsp;(Manual Lock / Unlock values will override the deadline lock).
+  br
+  hr
+  br
+  .label(style="float:right")
+    = cancel_link
+  = f.submit "Save Changes", :class => "button"

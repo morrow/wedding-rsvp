@@ -1,0 +1,30 @@
+= render "links"
+h1 Invitations
+= link_to "Export Invitations to Excel (CSV)", url_for(:format => 'csv'), :class => 'btn btn-success'
+| &nbsp;
+| <input type="search" id="filter" name="filter" placeholder="Type here to filter results" onkeyup="Admin.filter(this.value);"/>
+br
+br
+table.invitations.individual
+  tr
+    th ID
+    th Code
+    th Name
+    th Guests
+    th(style="width:60px") # Guests
+    th Completed
+    th Show
+    /th Destroy
+  - @invitations.sort_by{ |x| [(x.accessed ? 0 : 1), x.id] }.each do |invitation|
+    tr(class="#{'accessed' if invitation.accessed} #{invitation.is_manual if invitation.is_manual}")
+      td= invitation.id
+      td= link_to invitation.key, invitation
+      td= link_to invitation.name, invitation
+      td.guests
+        - invitation.guests.each do |guest|
+          br
+          = link_to guest.name, [:edit, invitation, guest]
+      td= invitation.number_of_guests
+      td= humanize invitation.completed
+      td= link_to "Show Invitation", invitation
+      /td= link_to "Destroy Invitation", invitation, :method => :delete, :confirm => "Destroy: \n\n #{invitation.name} \n \n Are you sure??"

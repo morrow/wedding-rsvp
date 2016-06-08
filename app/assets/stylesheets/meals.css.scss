@@ -1,0 +1,23 @@
+.meals {
+  font-size:18px;
+  .meal {
+    margin-top:30px;
+    .name {
+      font-family:tienne;
+      font-weight:700;
+      font-size:120%;
+      color:black;
+    }
+    .description, .modifications {
+      color:#333;
+    }
+    .modifications {
+      color:#777;
+      font-style:italic;
+    }
+  }
+  form textarea {
+    width:100%;
+    min-height:70px;
+  }
+}

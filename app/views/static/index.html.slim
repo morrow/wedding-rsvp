@@ -1,0 +1,52 @@
+#home
+  #hero_wrap
+    #hero
+      = image_tag "/images/amanda-adam1.jpg"
+      .caption Amanda and Adam at their engagement, June 2011.
+    h2.accent Welcome to our wedding website!
+    p Amanda and Adam met in 2006 at a Christmas party.  Adam says that Amanda noticed him because he was the ‘tallest guy at the party.’  Amanda decided she really liked Adam from the start because he was funny and she had finally found someone who loved coffee as much as she did! 
+    p Adam proposed to Amanda after four wonderful years together.  He got down on one knee at Breaux Vineyards in Loudoun County, Virginia, on a beautiful Saturday afternoon in June.  Amanda said ‘yes’ right away! 
+    p Please take a look around our website and let us know if you have any questions.
+    b We look forward to seeing you July 7, 2012!
+- if false
+  #details(name="details")
+    //h1.accent Details
+    #where
+      h3(id="ceremony" name="ceremony")
+      span.accent Ceremony 
+      | to be held with 
+      span.accent reception 
+      | to follow at:
+      table.location
+        tr
+          td
+            strong The Westin Hotel
+            div 400 Courthouse Square,
+            div Alexandria, VA 22314
+            br
+            ul.links
+              li
+                a(href="http://www.westinalexandria.com" target="_blank") Hotel Website
+              li
+                a(href="http://amanda-adam.com/contact#westin") Contact information
+              li
+                a(href="http://amanda-adam.com/information#directions") Directions to the hotel
+          td
+            img.polaroid(src="images/westin.jpg" width="300px")
+      table.details#when
+        tr
+          td.accent Ceremony: 
+          td
+            span.pictos \
+            | July 7th, 2012
+          td
+            span.pictos t
+            | 6:00pm
+        tr
+          td.accent Reception: 
+          td
+            span.pictos \
+            | July 7th, 2012
+          td
+            span.pictos t
+            | to follow

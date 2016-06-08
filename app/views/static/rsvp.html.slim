@@ -1,0 +1,33 @@
+- if rsvp_is_locked
+  center
+    h1 RSVP
+    h2 
+      - if deadline_is_passed
+        | We're sorry, but the RSVP deadline has now passed.
+      - else
+        | We're sorry, but the RSVP system has been closed.
+    div 
+      | For help, please
+      = link_to "contact us", "/contact"
+      |.
+    br
+- else
+  = render "shared/rsvp_warning"
+  center
+    h1 RSVP
+    form action="" onsubmit="RSVP.find(invitation_code.value);return false;"
+      span Please enter your 6-digit invitation password*: 
+      | &nbsp;
+      input(id="invitation_code" name="invitation_code" type="text" maxlength="6")
+      input(type="submit" value="Submit")
+  hr
+    div(style="color:#c00;")
+      | Please note, the deadline to RSVP is:
+      | &nbsp;&nbsp;
+      b(style="color:black")= rsvp_deadline
+    p
+      | Don't have an invitation password?  
+      a(href="/rsvp/manual") Click here to RSVP manually
+    p
+      em * Your invitation password can be found on the reverse of your invitation.
+  = render "shared/help", :message => "Unsure what to do? Code not working?", :anchor => "rsvp_instructions"

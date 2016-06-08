@@ -1,0 +1,63 @@
+- title ||= page_name.split("_")[0]
+- if title == 'static' then title = page_name.split("_")[1] end
+- if title == "index" then title = "home" end
+- classes = page_name.split("_").join(" ")
+DOCTYPE html
+html
+  head
+    title
+      | #{title.capitalize} |  The Marriage of Amanda Morrow and Adam Kertz
+    = stylesheet_link_tag    "application",  :media => "all"
+    = stylesheet_link_tag    "//fonts.googleapis.com/css?family=Delius+Swash+Caps|Rochester|Open+Sans|Droid+Serif:400,700|Bitter:400,700", :media => "all"
+    | <!--[if lt IE 8]>
+    | <link rel="stylesheet" type="text/css" href="/assets/ie.css" />
+    | <![endif]-->
+    | <!--[if lt IE 7]>
+    | <link rel="stylesheet" type="text/css" href="/assets/ie6.css" />
+    | <![endif]-->
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = favicon_link_tag("/favicon.ico")
+  body
+    #wrap
+      h1#title
+        img#header(src="/images/header_s.jpg")
+        | <!--[if gte IE 9]>
+        #header-text
+          | Amanda Morrow
+          #ampersand &
+          | Adam Kertz
+        | <![endif]-->
+      ul#navigation
+        - navigation = [["Home", "home", "H"], ["RSVP", "rsvp", "M",], ["Wedding Party", "wedding-party", "g"], ["Information", "information", "i"], ["Registries", "registries", "z"], ["Pictures", "pictures", "P"], ["Contact", "contact", "q"]]
+        - navigation.each do |ary|
+          li
+            - current_class = nil
+            - if current_page?(:controller => :static, :action => ary[1])
+              - current_class = 'current'
+            - elsif %w(guests invitations).include?(controller.controller_name) and ary[1] == "rsvp"
+              - current_class = 'current'
+            - elsif controller.controller_name == "static" and controller.action_name == "index" and ary[1] == "home"
+              - current_class = 'current'
+            = link_to "/#{ary[1]}", :class => [ary[1], current_class] do
+              .pictos #{ary[2]}
+              = ary[0]
+      - if flash[:notice] or flash[:warning]
+        #notifications
+          - if flash[:notice]
+            #notice.alert.alert-success= flash[:notice]
+          - if flash[:warning]
+            #warning.alert.alert-error= flash[:warning]
+      #main(class="#{title.downcase.chomp}")
+        = yield
+    script(type="text/javascript")
+      |  var _gaq = _gaq || [];
+      |  _gaq.push(['_setAccount', 'UA-28103830-1']);
+      |  _gaq.push(['_setAllowLinker', true]);
+      |  _gaq.push(['_setDomainName', 'amanda-adam.com']);
+      |  _gaq.push(['_trackPageview']);
+      |  (function() {
+      |    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      |    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      |    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      |  })();

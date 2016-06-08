@@ -1,0 +1,261 @@
+.invitations, .guests, .guest {
+  font-family:'Open Sans';
+}
+
+.key {
+  background:#FCF8E3;
+  border:1px solid #FAECD1;
+  padding:.1em .5em;
+  display:inline-block;
+  margin: .1em .3em .1em .1em;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.guest {
+  display:block;
+  font-family:'Open Sans';
+  h2 {
+    margin:5px;
+  }
+  input[type=text] {
+    margin-left:10px;
+    padding:10px 5px;
+  }
+  span.emphasis {
+    color:#296F79;
+  }
+  span.true {
+    color:green;
+  }
+  span.false {
+    color:red;
+  }
+  .name {
+    font-weight:bold;
+    text-decoration:underline;
+  }
+  .ceremony, .reception, .meal {
+    margin:10px 15px;
+    &.true, .true { color:green; }
+    &.false, .false { color:red; }
+    .word {
+      display:inline-block;
+      margin-left:5px;
+    }
+  }
+  .field .label {
+    display:inline-block;
+    width:120px;
+  }
+  .field label {
+    padding:5px 10px;
+    margin:10px 30px;
+    cursor:pointer;
+    display:inline-block;
+    &:hover {
+      background:whiteSmoke;
+    }
+  }
+  .field input[type=radio] {
+    margin-right:5px;
+  }
+  form > * {
+    margin:0px;
+    margin-top:-1px;
+    padding:10px;
+    border:1px dotted #ccc;
+    border-left-style:solid;
+    border-right-style:solid;
+    background:white;
+  }
+  form > *:nth-child(2){
+    border-top-style:solid;
+  }
+  form > *:nth-child(3){
+    border-top-style:solid;
+  }
+  form > *:last-child{
+    border-bottom-style:solid;
+  }
+  form div:first-child {
+    border:none; padding:none;
+  }
+  form .heading {
+    border-top-style:solid;
+    background:#ddd;
+    text-align:center;
+    h1 {
+      margin:0px;
+    }
+    a {
+      font-size:17px;
+    }
+    label {
+      margin-top:5px;
+    }
+  }
+  textarea {
+    height:50px;
+    width:90%;
+    margin:5px auto;
+  }
+  [for=guest_submit] {
+    border-bottom-style:solid;
+    input {
+      font-weight:bold;
+      font-size: 20px;
+      padding: .5em 1em;
+      color: green;
+    }
+  }
+  [for=guest_cancel] {
+    float: right;
+    border: none;
+    margin: 10px;
+    padding: 0px;
+    input {
+      font-size:15px;
+      color:#888;
+    }
+  }
+}
+
+.guests {
+  margin-top:20px;
+  th {
+    border:1px solid #aaa;
+    background:#ddd;
+  }
+  .meals_select {
+    [type=radio] {
+      float:left;
+      width:30px;
+      position:relative;
+      bottom:-7px;
+    }
+    .meal {
+      margin:10px;
+      cursor:pointer;
+      padding:5px;
+      border:1px solid transparent;
+      color:#666;
+      &:hover {
+        background:whiteSmoke;
+      }
+      .name {
+        color:black;
+      }
+      .description, .modifications {
+        margin-left:30px;
+        font-size:90%;
+      }
+      .modifications {
+        font-style:italic;
+      }
+    }
+  }
+}
+
+.meals_select{
+  label {
+    &.selected {
+      .name {
+        color:green !important;
+      }
+      background:#ddd;
+      border:1px solid #bbb !important;
+      &:hover {
+        background:#ddd !important;
+      }
+      &:before {
+        content: " ✓ ";
+        font-size:50px;
+        color:green;
+        float:right;
+        width:50px;
+        height:100px;
+      }
+    }
+  }
+}
+
+#ceremony, #reception {
+  .label {
+    font-size:110%;
+    font-weight:bold;
+  }
+  &.attending .label {
+    color:green;
+  }
+  &.not_attending .label {
+    color:red;
+  }
+   label {
+    height:30px;
+    min-width:160px;
+    opacity:.7;
+    .true, .false {
+      color:gray;
+    }
+    &:hover {
+      opacity:10 !important;
+      .true {color:green;}
+      .false { color:red;}
+    }
+    &.selected {
+      .true {color:green;}
+      .false { color:red;}
+      opacity: 10 !important;
+      background:#eee;
+      border-color:#ccc;
+      &:before {
+        content: " ✓ ";
+        font-size:30px;
+        color:green;
+        float:right;
+        width:30px;
+        position: relative;
+        top: -7px;
+        left: 10px;
+        padding-right:10px;
+      }
+      &[for=guest_ceremony_not_attending]:before, &[for=guest_reception_not_attending]:before { 
+        color:red;
+      }
+    }
+  }
+}
+
+.invitation_guest_list .guest {
+  padding:5px;
+  background:#fafafa;
+  border:2px solid #ccc;
+  font-size:16px;
+  min-height:45px;
+  margin-top:15px;
+  button, a.button {
+    border-bottom:1px solid #ccc !important;
+  }
+  a.button {
+    float:right;
+    font-size:140%;
+    color:green;
+  }
+  &.button {
+    float:left;
+    margin-right:10px;
+    height:30px;
+    padding-top:2px;
+  }     
+}
+
+.invitation_name {
+  margin:0.6em 0em 1.2em 0em;
+}
+
+.edit_guest_button {
+  float:right;
+  margin:10px 15px;
+  font-size:13px;
+}

@@ -1,0 +1,74 @@
+.admin {
+  #filter {
+    float: right;
+    position: relative;
+    top: 9px;
+    font-size: 14px;
+    font-family: monospace;
+    padding: .4em .5em;
+    width: 250px;
+  }
+  #links a {
+    margin-left:20px;
+    font-size:15px;
+  }
+  #links a.true {
+    color:green;
+  }
+  font-size:13px;
+  table {
+    width:100%;
+    &.filtering tr {
+      opacity:10 !important;
+    }
+    &.individual {
+      tr {
+        opacity: .4;
+        &.accessed, &:first-child, &:hover {
+          opacity:10;
+        }
+        &:hover td {
+          background:#eee;
+        }
+        td:nth-child(2) {
+          text-align:left;
+        }
+        td:first-child {
+          font-weight:bold;
+        }
+        th {
+          cursor:pointer;
+          -moz-user-select:none;
+          -webkit-user-select:none;
+          &:hover {
+            background:#ccc !important;
+          }
+        }
+      }
+    }
+    &.meals {
+      tr td {
+        font-size:80px; 
+        font-weight:bold;
+        padding:0px;
+      }
+    }
+    tr {
+      td {
+        text-align:center;
+      }
+      td.guests {
+        width:200px;
+      }
+      td.edit {
+        color:#09f;
+      }
+      td.reset {
+        color:orangered;
+      }
+      td.delete {
+        color:red;
+      }
+    }
+  }
+}

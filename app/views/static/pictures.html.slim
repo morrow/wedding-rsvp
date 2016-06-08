@@ -1,0 +1,12 @@
+- gallery_link = "http://lizbadleyphotography.blogspot.com/2011/11/first-look-amanda-and-adams-engagement.html"
+h2
+  | Engagement photos! by 
+  a(href="#{gallery_link}" target="_blank") Liz Badley Photography
+ul.gallery
+  - (1..5).each do |x|
+    li
+      a(href="#{gallery_link}" target="_blank")
+        img(src="images/photos/engagement/#{x}.jpg" alt="")
+hr
+center
+  a(href="#{gallery_link}" target="_blank") More Engagement photos  

@@ -1,0 +1,30 @@
+= render "links"
+h1 Guests
+= link_to "Export Guests to Excel (CSV)", url_for(:format => 'csv'), :class => 'btn btn-success'
+| &nbsp;
+| <input type="search" id="filter" name="filter" placeholder="Type here to filter results" onkeyup="Admin.filter(this.value);"/>
+br
+table.guests.individual
+  tr
+    th ID
+    th Invitation
+    th Guest Name
+    th Ceremony
+    th Reception
+    th Meal
+    th Acc.
+    th Edit
+    th Reset
+    /th Delete
+  - @guests.sort_by{ |x| [(x.accessed ? 0 : 1),x.invitation.key, x.last_name, x.first_name]}.each do |guest|
+      tr(class="#{'accessed' if guest.accessed}")
+        td= guest.id
+        td= link_to guest.invitation.key, guest.invitation
+        td= link_to guest.name, ["edit", guest.invitation, guest]
+        td= humanize guest.ceremony, :attendance
+        td= humanize guest.reception, :attendance
+        td= guest.meal.short_name if guest.meal
+        td= (guest.accommodations and guest.accommodations.length > 1) ? 'yes' : nil
+        td.edit= link_to "Edit", ["edit", guest.invitation, guest]
+        td.reset= link_to "Reset", ["reset", guest.invitation, guest], :confirm => "RESET: \n\n #{guest.name} \n \n Are you sure??"
+        /td.delete= link_to "Delete", [guest.invitation, guest], :method => :delete, :confirm => "DESTROY: \n\n #{guest.name} \n \n Are you sure??"

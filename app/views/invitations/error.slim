@@ -1,0 +1,18 @@
+h1 Error retrieving RSVP data
+#key 
+  h2 You supplied the following information:
+  table.table
+    tr
+      td Invitation Code
+      td #{id}
+    tr
+      td Last Name
+      td #{family_name}
+h2 Which resulted in the following error:
+#result(style="color:red")
+  span #{content}
+br
+button(onclick='window.history.go(-1)') Return to the previous page
+hr
+a(href="/help") Get help with this RSVP
+    

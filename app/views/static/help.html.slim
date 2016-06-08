@@ -1,0 +1,92 @@
+h1 Help
+ol
+  li
+    a(href="#rsvp_instructions") Step-by-step Instructions to RSVP
+  li
+    a(href="#manual_rsvp") Lost invitation code / manual RSVP
+  li
+    a(href="#incorrect_information") Incorrect Information on Invitation
+#rsvp(name="rsvp")
+  h2#rsvp_instructions(name="rsvp_instructions") RSVP instructions: 
+  p Step-by-step instructions if you have your invitation:
+  ol
+    li
+      | Look for the code printed on the label on the back of your 
+      b invitation:
+      = image_tag "invitation_reverse_highlighted.jpg", :id => "invitation_reverse"
+      br
+      em 
+        .key LPTTIJ
+        b is just an example code and will not work.
+    li
+      | Visit the 
+      a(href="/rsvp") RSVP page
+      | and enter the code from your invitation into the box, then click "Submit".
+      = image_tag "rsvp_screen.jpg", :id => "rsvp_screen"
+    li
+      | Choose a guest to edit, and click the blue 
+      b "Edit RSVP" 
+      | button (on the right):
+      = image_tag "invitation_uncompleted.jpg"
+    li
+      | Choose the responses for your invitation for attendance and meal choices:
+      = image_tag "invitation_editing_highlighted.jpg"
+      br 
+      em Click the 
+      b Save Changes 
+      em button to store the information you entered.
+    li
+      | Back on the invitation page, you can see the result:
+      = image_tag "invitation_completed.jpg"
+    li
+      | Once you#{apostrophe}ve filled out a response for all the guests in your party, you are all set!
+    p
+    | You can come back to edit this information in the future using the same password found on the back of your invitation.
+    p 
+    b Just be sure to respond before the RSVP deadline:  
+    | &nbsp;
+    .key #{rsvp_deadline}
+br
+hr
+#manual_rsvp(name="manual_rsvp")
+  h2 Lost Invitation Code / Manual RSVP
+  p If you don#{apostrophe}t have an invitation code, you can still respond manually.
+  p 
+    | The easiest way is to 
+    a(href="/rsvp/manual") respond  manually
+    | and follow the 
+    a(href="/help/#rsvp_instructions") above instructions 
+    | if you get stuck.
+  p
+    em You can also respond via e-mail if necessary:
+    ul
+      li
+        | E-mail
+        a(href="mailto:aakertz@gmail.com") aakertz@gmail.com
+        | with the following information:
+      li Subject: "RSVP - First name Last Name"
+      li Number of guests attending
+      li
+        | Meal choices (select a meal from 
+        a(href="/meals")these options
+        |).
+      li
+        | Any special instructions for necessary food allergy / dietary restriction modifications to your meal 
+        = link_to "(available modifications)", "/meals"
+        |.
+    li
+      | If you have any questions, please 
+      a(href="/contact")contact us
+br
+hr
+#incorrect_information(name="incorrect_information")
+  h2 Incorrect Information
+  ul
+    li If some or all of the information retrieved from your invitation code is wrong, please try the following: 
+    ol
+      li Double-check the spelling of the invitation code on the back of your invitation.
+      li Double-check the typed code to be sure it matches.
+      li
+        | If there are still problems, please 
+        a(href="/contact") contact us 
+        | so we can fix it!

@@ -1,0 +1,55 @@
+.guest
+  = link_to edit_invitation_guest_path(guest.invitation, guest), :class => "edit_guest_button btn #{guest.completed ? 'btn-success' : 'btn-primary'}" do
+    span.pictos p 
+    | &nbsp;
+    - if not guest.accessed
+      b Respond to RSVP
+    - else
+      b Edit your response.
+  h2
+    = guest.name 
+    |&nbsp;
+    - if guest.is_plus_one
+      |&nbsp;
+      span (guest)
+  - if not guest.accessed
+    .ceremony
+      .pictos(style="top:-2px;position:relative;") ?
+      .word
+        span.false Has not responded yet. 
+  - else
+    .ceremony(class="#{guest.ceremony}")
+      - if guest.ceremony
+        .pictos 3
+      - elsif guest.ceremony == false
+        .pictos *
+      - else
+        .pictos ? 
+      .word Ceremony
+    .reception(class="#{guest.reception}")
+      - if guest.reception
+        .pictos 3
+      - elsif guest.reception == false
+        .pictos *
+      - else
+        .pictos ?
+      .word Reception
+    .meal
+      - if guest.meal
+        .pictos 3
+      - else
+        .pictos i
+      .word
+        - if guest.meal
+            span.emphasis= guest.meal.name
+            | &nbsp;meal chosen
+        - elsif guest.reception == nil
+          | Has not selected a meal yet
+        - elsif guest.reception == false
+          | Not attending reception, so no  
+          span.emphasis meal choice 
+          | necessary
+        - if guest.meal and guest.accommodations and not guest.accommodations.empty?
+          | &nbsp;with instructions: 
+          span.emphasis= '"' + guest.accommodations + '"'
+        |.

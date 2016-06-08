@@ -1,0 +1,38 @@
+body {
+  padding:5px;
+  overflow-y:scroll;
+}
+
+table {
+  border-collapse:collapse;
+  border:1px solid #ccc;
+  tr {
+    th {
+      text-align:center;
+    }
+    td {
+      border:1px solid #ccc;
+    }
+  }
+}
+
+input[type=number] {
+  min-height:30px;
+}
+
+h1 span, h2 span, h3 span, h4 span, h5 span {
+  font-size:85%;
+  font-weight:normal;
+}
+
+[disabled], [disabled]:hover {
+  color:gray !important;
+  cursor:default !important;
+  opacity:.5 !important;
+  background:white !important;
+}
+
+.apostrophe {
+  margin-left:2px;
+  font-size:inherit;
+}

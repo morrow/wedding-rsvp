@@ -1,0 +1,6 @@
+= render "shared/rsvp_warning"
+= link_to(@guest.invitation, :class => "button") do 
+  b &larr; Go back to Invitation
+p
+= render @guest
+= render "shared/help", :message => "Do the invitation or guest names on this page seem incorrect?"

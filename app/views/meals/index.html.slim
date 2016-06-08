@@ -1,0 +1,10 @@
+h1 Meals availalble:
+.meals
+  = render @meals
+br
+br
+hr
+p 
+  | To choose a meal, please RSVP 
+  a(href="/rsvp") here.
+= render "shared/help", :message => "For any questions "

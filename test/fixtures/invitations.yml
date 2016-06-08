@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key: MyString
+  category: 
+  name: MyString
+  number_of_guests: 1
+  wedding_party: false
+
+two:
+  key: MyString
+  category: 
+  name: MyString
+  number_of_guests: 1
+  wedding_party: false

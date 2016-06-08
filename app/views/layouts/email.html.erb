@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Email </title>
+    <style type="text/css">
+      table {
+        border-collapse:collapse;
+      }
+      table tr th{
+        background:#ddd;
+        border:1px solid #aaa;
+      }
+      table tr td {
+        min-width:100px;
+        border:1px solid #ddd;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+    <br />
+    <hr />
+    <div> Email generated on <%= Time.now.strftime('%c') %> (<%= Time.now.to_i %>)</div>
+  </body>
+</html>

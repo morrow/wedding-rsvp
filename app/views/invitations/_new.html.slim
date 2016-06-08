@@ -1,0 +1,8 @@
+h1 New Invitation
+= f.fields_for @guest.invitation do |builder|
+  = builder.label :name do
+    | Name on your invitation: 
+    = builder.text_field :name, :placeholder => "example: Mr. and Mrs. Joe Smith", :required => true
+  = builder.label :number_of_guests do
+    | Total party size as indicated on invitation (including any guests): 
+    = builder.number_field :number_of_guests, {:min => 1, :max => 5, :value => 1, :required => true}

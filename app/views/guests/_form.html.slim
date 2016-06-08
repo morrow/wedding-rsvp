@@ -1,0 +1,84 @@
+.guest
+  = form_for [@guest.invitation, @guest] do |f|
+    - if @guest.is_manual
+      .invitation
+        - if @guest.invitation.guests.length < 1
+          h1 New Invitation
+          = f.fields_for @guest.invitation do |guest_invitation|
+            = guest_invitation.label :name do
+              | Name on your invitation: 
+              = guest_invitation.text_field :name, :placeholder => "example: Mr. and Mrs. Joe Smith", :required => true
+            = guest_invitation.label :number_of_guests do
+              | Total party size as indicated on invitation (including any guests): 
+              = guest_invitation.number_field :number_of_guests, {:min => 1, :max => 5, :value => 1, :required => true}
+          hr
+          h1 New Guest 
+          h2 Add the first guest for this invitation: 
+        - else
+          h1 New Guest
+          h2 Adding new guest to #{@guest.invitation.name}#{apostrophe}s invitation
+    .heading
+      h1
+        =@guest.name
+        - if @guest.is_plus_one
+          | &nbsp;&nbsp;
+          span
+            | (Guest of 
+            = plus_one_host_name(@guest)
+            | )
+    - if @guest.is_plus_one or @guest.is_manual
+      = f.label :first_name do
+        span Guest 
+        b First Name: 
+        = f.text_field :first_name
+      = f.label :last_name do
+        span Guest 
+        b Last Name: 
+        = f.text_field :last_name
+    #ceremony.field
+      .label.ceremony Ceremony:
+      = f.label "ceremony_attending" do
+        = radio_button(:guest, :ceremony, :attending, :required => "required", :checked => @guest.ceremony ? true : nil)
+        span.true Will 
+        | attend
+      = f.label "ceremony_not_attending" do            
+        = radio_button(:guest, :ceremony, :not_attending, :required => "required", :checked => @guest.ceremony == false ? true : nil)
+        | Will 
+        span.false not 
+        | attend
+    #reception.field
+      .label.reception Reception:
+      = f.label "reception_attending" do
+        = radio_button(:guest, :reception, :attending, :required => "required", :checked => @guest.reception ? true : nil)
+        span.true Will 
+        | attend
+      = f.label "reception_not_attending" do            
+        = radio_button(:guest, :reception, :not_attending, :required => "required", :checked => @guest.reception == false ? true : nil)
+        | Will 
+        span.false not 
+        | attend
+    = render "meals/select"
+    = f.label :accommodations do
+      div
+        | If neccessary, please list any relevant 
+        span.emphasis food allergy 
+        | instructions or other 
+        span.emphasis special requests:
+      .field
+        = f.text_area :accommodations do
+          - if @guest.accommodations 
+            = @guest.accommodations
+    = f.label :cancel do
+      = cancel_link
+    = f.label :submit do
+      = f.submit "Save"
+      | &nbsp;
+      - if @guest.is_manual
+        | new RSVP
+      - elsif @guest.is_plus_one
+        | #{@guest.first_name}#{apostrophe}s RSVP
+      - else
+        | #{@guest.first_name.gsub(/'s/, '')}#{apostrophe}s RSVP
+#contact.field
+  | Need more information?  Have any questions? 
+  = link_to "Contact Us", "/contact"

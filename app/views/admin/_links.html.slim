@@ -1,0 +1,5 @@
+- large ||= false
+= render "shared/rsvp_warning"
+center#links
+  - %w(summary guests invitations meals deadline).each do |resource|
+    = link_to resource.capitalize, "/admin/#{resource}", :class => current_page?(:controller => :admin,:action => resource), :style => "#{'font-size:200%;' if large}"

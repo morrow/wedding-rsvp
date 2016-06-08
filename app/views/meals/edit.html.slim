@@ -1,0 +1,18 @@
+h2 Edit #{@meal.name}
+= form_for @meal do |f|
+  = f.label :short_name do
+    .label Short Name
+    = f.text_field :short_name
+  = f.label :name do
+    .label Name
+    = f.text_area :name
+  = f.label :description do
+    .label Description
+    = f.text_area :description
+  = f.label :modifications do
+    .label Modifications
+    = f.text_area :modifications
+  hr
+  = f.submit "Save Changes"
+  br
+  = cancel_link

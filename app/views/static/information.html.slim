@@ -1,0 +1,12 @@
+- links = %w(ceremony-reception timeline directions accommodations attire visitor-information)
+- link_names = {"timeline" => "Timeline of Events", "ceremony-reception" => "Ceremony and Reception", "visitor-information" => "Visitor's Information", "accommodations" => "Hotel Rooms / Accommodations"}
+h1 Wedding Information
+ol.index
+  - links.each do |link|
+    li
+      = link_to (link_names.include?(link) ? link_names[link] : link.capitalize), "##{link}"
+= render "shared/help", :message => "Need Help?"
+- links.each do |link|
+   hr
+   = content_tag(:div, :class => link, :id => link, :name => link) do
+     = render link

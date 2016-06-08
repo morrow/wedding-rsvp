@@ -1,0 +1,8 @@
+.meals_select
+  h3 Please select a meal of your choice:
+  - @meals.each do |meal|
+    = label_tag "guest_meal_id_#{meal.id}", :class => "meal" do
+      = radio_button(:guest, :meal_id, meal.id, :required => "required")
+      .name= meal.name
+      .description= meal.description
+      .modifications= meal.modifications

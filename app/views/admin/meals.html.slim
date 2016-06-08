@@ -1,0 +1,21 @@
+= render "links"
+h1 Meals
+h2 Summary
+table.meals
+  tr
+    th Chicken
+    th Steak
+    th Salmon
+    th Ravioli
+  tr
+    td= total :chicken
+    td= total :steak
+    td= total :salmon
+    td= total :ravioli
+br
+h2 Invididual Meals
+- @meals.each do |meal|
+  = render meal
+  = link_to "Edit #{meal.short_name}", [:edit, meal], :class => :button
+  br
+  br

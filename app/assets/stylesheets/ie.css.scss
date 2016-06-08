@@ -1,0 +1,53 @@
+body {
+  overflow:auto;
+}
+
+#navigation li {
+  a { 
+    * { display:inline; }
+    padding: 5px 10px 5px 5px;
+    &, * {
+      cursor:pointer;
+    }
+  }
+}
+
+#main.rsvp form {
+  display: inline;
+  input#invitation_code {
+    font-family: "arial";
+    margin:0em .5em;
+    position:relative;
+    bottom:-5px;
+  }
+}
+
+button, .button {
+  background:#E1E1E1;
+  background-color:#E1E1E1;
+  .pictos {
+    display:inline;
+    margin:0px 5px;
+  }
+}
+
+.button {
+  padding:.5em 1em;
+  position:relative;
+  bottom:-8px;
+}
+
+#main a {
+  color:#333 !important;
+  position:relative;
+  bottom:-.2em;
+  margin:0em .5em;
+  &.button {
+    bottom:0em;
+    padding-top: .2em;
+    .pictos {
+      position:relative;
+      top:-2px;
+    }
+  }
+}

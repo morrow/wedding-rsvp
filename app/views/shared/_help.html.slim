@@ -1,0 +1,9 @@
+- anchor ||= nil
+- message ||= "Do the invitation or guest names on this page seem incorrect? "
+- url = "/help"
+- if anchor
+  - url += "##{anchor}"
+center.help.alert(style="margin-top:0px;")
+  span #{message}
+  | &nbsp;&nbsp;
+  = render "shared/help-button", {:url => url}
